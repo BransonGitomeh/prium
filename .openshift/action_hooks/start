@@ -15,6 +15,6 @@ export MAX_HEAP_SIZE
 export HEAP_NEWSIZE
 cd $OPENSHIFT_DATA_DIR/cassandra
 bin/cassandra
-export CQLSH_HOST=$OPENSHIFT_DIY_IP
+export CQLSH_HOST=$OPENSHIFT_NODEJS_IP
 export CQLSH_PORT=19160
 sleep 30
