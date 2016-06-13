@@ -1,0 +1,5 @@
+#!/bin/bash
+# The logic to stop your application should be put in this script.
+set -x
+kill `ps -ef | grep cassandra | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
+exit 0
