@@ -31,4 +31,8 @@ else
 	sed -ig 's,${max_sensible_yg_in_mb}M,256M,' cassandra-env.sh
 	sed -ig 's,${desired_yg_in_mb}M,256M,' cassandra-env.sh
 	sed -ig '/jmxremote/s/^/#/' cassandra-env.sh
+
 fi
+
+	bin/cassandra-cli -h $OPENSHIFT_DIY_IP -p 19160 -f $OPENSHIFT_REPO_DIR/cassandra-tutorial.txt
+
