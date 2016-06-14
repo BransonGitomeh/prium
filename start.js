@@ -17,3 +17,19 @@ const ip = process.env.OPENSHIFT_NODEJS_IP || "localhost"
 app.listen(port, ip, 511, function(err) {
 	console.log('listening on *:' + port);
 });
+
+
+var cassandraDriver = require('cassandra-driver');
+
+const contactPoint = process.env.OPENSHIFT_CASSANDRA_DB_HOST + ":" + process.env.OPENSHIFT_CASSANDRA_DB_PORT
+var client = new cassandraDriver.Client({
+  contactPoints: [contactPoint]
+});
+
+client.connect(function(e) {
+  var query;
+  query = "CREATE KEYSPACE IF NOT EXISTS examples WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' }";
+  return client.execute(query, function(err, res) {
+    return console.log(e, res);
+  });
+});
