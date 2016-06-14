@@ -35,6 +35,7 @@ client.connect(function(e) {
   var query;
   query = "CREATE KEYSPACE IF NOT EXISTS examples WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' }";
   return client.execute(query, function(err, res) {
+  	console.log("completed the check for the keyspace")
     return console.log(e, res);
   });
 });
