@@ -26,7 +26,7 @@ const contactPoint2 = process.env.OPENSHIFT_CASSANDRA_DB_HOST + ":" + process.en
 
 var connectionOptions = {
    contactPoints:[contactPoint1,contactPoint2],
-   keyspace: 'system'
+   keyspace: 'examples'
  };
 
 var client = new cassandraDriver.Client(connectionOptions);
