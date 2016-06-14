@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 var assert = require("assert")
-var cassandraDriver = require('cassandra-driver');
-
 
 app.get('/', function(req, res) {
 	res.send({
@@ -21,19 +19,21 @@ app.listen(port, ip, 511, function(err) {
 });
 
 
+var cassandraDriver = require('cassandra-driver');
+
+const contactPoint1 = process.env.OPENSHIFT_CASSANDRA_DB_HOST + ":" + process.env.OPENSHIFT_CASSANDRA_DB_PORT
+const contactPoint2 = process.env.OPENSHIFT_CASSANDRA_DB_HOST + ":" + process.env.OPENSHIFT_CASSANDRA_NATIVE_TRANSPORT_PORT
 
 var connectionOptions = {
-   host: process.env.OPENSHIFT_CASSANDRA_DB_HOST,
-   port: process.env.OPENSHIFT_CASSANDRA_DB_PORT,
-   keyspace: 'awesome',
-   use_bigints: true
+   contactPoints:[contactPoint1,contactPoint2,process.env.OPENSHIFT_CASSANDRA_DB_HOST]
+   keyspace: 'awesome'
  };
 
 var client = new cassandraDriver.Client(connectionOptions);
 
 client.connect(function(e) {
   var query;
-  query = "CREATE KEYSPACE IF NOT EXISTS awesome WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' }";
+  query = "CREATE KEYSPACE IF NOT EXISTS examples WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' }";
   return client.execute(query, function(err, res) {
     return console.log(e, res);
   });
