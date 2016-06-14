@@ -25,7 +25,7 @@ const contactPoint1 = process.env.OPENSHIFT_CASSANDRA_DB_HOST + ":" + process.en
 const contactPoint2 = process.env.OPENSHIFT_CASSANDRA_DB_HOST + ":" + process.env.OPENSHIFT_CASSANDRA_NATIVE_TRANSPORT_PORT
 
 var connectionOptions = {
-   contactPoints:[contactPoint1,contactPoint2,process.env.OPENSHIFT_CASSANDRA_DB_HOST]
+   contactPoints:[contactPoint1,contactPoint2],
    keyspace: 'awesome'
  };
 
