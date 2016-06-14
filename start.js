@@ -18,7 +18,7 @@ app.listen(port, ip, 511, function(err) {
 	console.log('listening on *:' + port);
 });
 
-
+console.log("starting cassandra bussiness")
 var cassandraDriver = require('cassandra-driver');
 
 const contactPoint1 = process.env.OPENSHIFT_CASSANDRA_DB_HOST + ":" + process.env.OPENSHIFT_CASSANDRA_DB_PORT
@@ -32,6 +32,7 @@ var connectionOptions = {
 var client = new cassandraDriver.Client(connectionOptions);
 
 client.connect(function(e) {
+  console.log(e)
   var query;
   query = "CREATE KEYSPACE IF NOT EXISTS examples WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' }";
   return client.execute(query, function(err, res) {
