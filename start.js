@@ -2,12 +2,11 @@ var express = require('express');
 var app = express();
 
 app.get('/', function(req, res) {
-	// 	OPENSHIFT_CASSANDRA_HOST      The Cassandra IP address
-	// OPENSHIFT_CASSANDRA_PORT      The Cassandra port
-	// OPENSHIFT_CASSANDRA_LOG_DIR     The path to the Cassandra log directory
-	// OPENSHIFT_CASSANDRA_NATIVE_TRANSPORT_PORT Port for connecting with java client, on NATIVE TRANSPORT
 	res.send({
-		cassandra_host:process.env.OPENSHIFT_CASSANDRA_HOST
+		cassandra_host:process.env.OPENSHIFT_CASSANDRA_HOST,
+		cassandra_port:process.env.OPENSHIFT_CASSANDRA_PORT,
+		cassandra_log_dir:process.env.OPENSHIFT_CASSANDRA_LOG_DIR ,
+		cassandra_native_transport_port:process.env.OPENSHIFT_CASSANDRA_NATIVE_TRANSPORT_PORT
 	})
 });
 
