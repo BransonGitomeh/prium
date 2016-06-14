@@ -2,9 +2,9 @@
 
 ### so my story :smirk: 
 
-I have always watched netflix database backend talks and they talk about cassandra and how awesome it is. Lots of other companies have sang the DSE song and i have wanted to try it. so installing cassadra on the client is a breeze and fun. The i tried to do the same on the server, so naturally i selected the best free Paas things we have out there. so i can get a server that doesnt go out after 30mins(pun heroku) and also one that allows me to store data not flush my space after every restart (trol heroku). So after a LONG time trying to get this to run LOL (a few tried over a month) i finally got this to work well. 
+I have always watched netflix database backend talks and they talk about cassandra and how awesome it is. Lots of other companies have sang the DSE song and i have wanted to try it. So i tried installing cassadra on the client is a breeze and fun. Then i tried to do the same on the server, so naturally i selected the best free Paas things we have out there. so i can get a server that doesnt go out after 30mins(pun heroku) and also one that allows me to store data not flush my space after every restart (trol heroku). So after a LONG time trying to get this to run LOL (a few tried over a month - because of the lack of docs or articles like this to guide... and lots of uotdated info etc)... but i finally got this to work well. 
 
-so we need cassandra to get running, then make something to talk to it via any of the official drivers DSE provides. for this case ill use the famous node js...
+So we need cassandra to get running, then make something to talk to it via any of the official drivers DSE provides. for this case ill use the famous node js...
 
 at the time of writing this the latest version are
 ```
