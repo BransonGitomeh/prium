@@ -1,12 +1,13 @@
 var express = require('express');
 var app = express();
+var assert = require("assert")
 
 app.get('/', function(req, res) {
 	res.send({
-		cassandra_host:process.env.OPENSHIFT_CASSANDRA_HOST,
-		cassandra_port:process.env.OPENSHIFT_CASSANDRA_PORT,
-		cassandra_log_dir:process.env.OPENSHIFT_CASSANDRA_LOG_DIR ,
-		cassandra_native_transport_port:process.env.OPENSHIFT_CASSANDRA_NATIVE_TRANSPORT_PORT
+		cassandra_host: process.env.OPENSHIFT_CASSANDRA_DB_HOST,
+        cassandra_port: process.env.OPENSHIFT_CASSANDRA_DB_PORT,
+        cassandra_log_dir: process.env.OPENSHIFT_CASSANDRA_DB_LOG_DIR,
+        cassandra_native_transport_port: process.env.OPENSHIFT_CASSANDRA_NATIVE_TRANSPORT_PORT
 	})
 });
 
